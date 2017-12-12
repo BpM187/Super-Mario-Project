@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Super-Mario</title>
+<meta charset="utf-8">
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	background-color: black;
+}
+</style>
+<script src="phaser.min.js"></script>
+<script type = "text/javascript" src="Menu.js"></script>
+<script type = "text/javascript" src="Level1.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var game = new Phaser.Game(750, 480, Phaser.CANVAS);
+
+		game.state.add('Menu', Technotip.Menu);
+		game.state.add('Level1', Technotip.Level1);
+		game.state.start('Menu');
+		
+		
+	</script>
+</body>
+</html>
