@@ -11,8 +11,8 @@ function preload() {
 
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
-			//this.load.baseURL = 'https://bpm187.github.io/Super-Mario/';
-			//this.load.crossOrigin = 'anonymous';
+			this.load.baseURL = 'https://bpm187.github.io/Super-Mario/';
+			this.load.crossOrigin = 'anonymous';
 
 			this.load.spritesheet('tiles', 'assets/tiles.png', 32, 32);
 			this.load.spritesheet('goomba', 'assets/Enemy1.png', 32, 32);	
@@ -30,7 +30,7 @@ function preload() {
 			this.load.audio('Splash','audio/Splash.mp3');
 			this.load.audio('Pipe','audio/PipeSoundEffect.mp3');
 			this.load.audio('Death','audio/DeathSoundEffect.mp3');
-			this.load.audio('Finish','audio/GameFinished.mp3');
+			this.load.audio('Finish','audio/Outro.mp3');
 			this.load.tilemap('level', 'assets/Project.json', null, Phaser.Tilemap.TILED_JSON);
 			}
 
