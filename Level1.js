@@ -78,7 +78,7 @@ function preload() {
 			
 			
 			//add coins
-    		coins = game.add.group();
+    			coins = game.add.group();
 			coins.enableBody = true;
 			map.createFromTiles(616, null, 'coin', 'stuff', coins);
 			coins.callAll('animations.add', 'animations', 'updown', [0, 1, 2, 1 ], 3, true);
@@ -95,7 +95,7 @@ function preload() {
 			life.enableBody = true;
 			map.createFromTiles(618, null, 'life', 'stuff', life);
 			life.callAll('animations.add', 'animations', 'rotate',
-					[ 1, 1, 2, 3 ], 4, true);
+					[ 0, 1, 2, 3 ], 4, true);
 			life.callAll('animations.play', 'animations', 'rotate');	
 
 			goombas = game.add.group();
@@ -165,7 +165,7 @@ function preload() {
 			game.physics.arcade.overlap(player, bonus, bonusOverlap);
 			game.physics.arcade.overlap(player, life, lifeOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			positions();
+			allPositions1();
 
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -199,7 +199,7 @@ function preload() {
 			}
 		}
 
-		function positions()
+		function allPositions1()
 		{
 			if( player.x>2624 && player.x<2680 && player.y<352 && player.y>296)
 			{pipeSound.play(); player.x=544; player.y=128;}
@@ -212,6 +212,11 @@ function preload() {
 				l=false;
 				player.body.enable=false;
 				player.animations.play('end');
+				game.time.events.add(Phaser.Timer.SECOND * 5, function() 
+				{
+					finishSound.stop();
+					game.state.start('Level2');
+				});
 			}
 		}
 
@@ -266,8 +271,10 @@ function preload() {
 					player.frame = 14;
 					player.body.enable = false;
 					player.animations.stop();
-					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					game.paused = true;
+					game.time.events.add(Phaser.Timer.SECOND * 3, function() 
+					{
+						scoreT=0; bonusT=0; lifeT=0;
+						this.game.state.restart();
 				});
 				}
 			}
