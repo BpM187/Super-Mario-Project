@@ -1,17 +1,14 @@
 var Technotip = {};
  
-Technotip.Menu = function(game){
-    var text1;
-	var text2;
-	var myImage;
-};
+Technotip.Menu = function(game){};
  
 Technotip.Menu.prototype = {
 	
 	preload: function()
 	{
 		this.load.image('wallpaper', 'assets/wallpaper.png');
-		this.load.image('play', 'assets/play.png');
+		this.load.image('level1', 'assets/level1.png');
+		this.load.image('level2', 'assets/level2.png');
 		
 	},	
 	create: function()
@@ -23,9 +20,13 @@ Technotip.Menu.prototype = {
 		wallpaper.width = game.world.width;
 		wallpaper.height = game.world.height;
 		
-		play=game.add.sprite(game.world.width/4.35,game.world.height/5.3,'play');
+		level1btn=game.add.sprite(game.world.width/3.8,game.world.height/6.15,'level1');
+		level2btn=game.add.sprite(game.world.width/3.8,game.world.height/4.15,'level2');
 		
-		play.inputEnabled = true;
-        play.events.onInputDown.add(function(){this.state.start('Level1');}, this);
+		level1btn.inputEnabled = true;
+        level1btn.events.onInputDown.add(function(){this.state.start('Level1');}, this);
+		
+		level2btn.inputEnabled = true;
+        level2btn.events.onInputDown.add(function(){this.state.start('Level2');}, this);
     },
 };
